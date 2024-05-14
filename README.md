@@ -56,7 +56,7 @@ cd $HOME/atacseq
 module load Nextflow/23.10.0
 
 nextflow pull nf-core/atacseq
-nextflow run nf-core/atacseq -r 3.14.0 --input ./samplesheet.csv  -profile singularity --outdir ./atacseq_results --fasta ./Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz --gtf ./Homo_sapiens.GRCh38.108.gtf.gz -work-dir $SCRATCH/atacseq_work -c ./nextflow.config
+nextflow run nf-core/atacseq -r 2.1.2 --input ./samplesheet.csv  -profile singularity --outdir ./atacseq_results --fasta ./Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz --gtf ./Homo_sapiens.GRCh38.108.gtf.gz -work-dir $SCRATCH/atacseq_work -c ./nextflow.config
 ```
 Save the run_atacseq.sb file and return to your ATAC-seq directory.
 
