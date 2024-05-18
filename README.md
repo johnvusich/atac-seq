@@ -14,6 +14,8 @@ Login to your HPCC account using OnDemand. Navigate to your home directory by cl
 
 Create a directory for your analysis by clicking 'New Directory'. Name your directory (ex: atacseq). Navigate to the newly created ATAC-seq directory.
 
+Make sure to upload your data (FASTQ files) into this directory.
+
 ## Make a samplesheet table
 In your ATAC-seq directory, click 'New File'. Name the file 'samplesheet.csv'. Click the `⋮` symbol and select edit. Create the samplesheet table FOR YOUR DATA. Below is a template:
 ```
