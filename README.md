@@ -15,13 +15,15 @@ Login to your HPCC account using OnDemand. Navigate to your home directory by cl
 Create a directory for your analysis by clicking 'New Directory'. Name your directory (ex: atacseq). Navigate to the newly created ATAC-seq directory.
 
 ## Make a samplesheet table
-In your ATAC-seq directory, click 'New File'. Name the file 'samplesheet.csv'. Click the `⋮` symbol and select edit. Create the samplesheet table, for example:
+In your ATAC-seq directory, click 'New File'. Name the file 'samplesheet.csv'. Click the `⋮` symbol and select edit. Create the samplesheet table FOR YOUR DATA. Below is a template:
 ```
 sample,fastq_1,fastq_2,replicate
 CONTROL,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz,1
 CONTROL,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz,2
 CONTROL,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz,3
 ```
+Note: the samplesheet above is an example to show the required format. You will still need to make a samplesheet FOR YOUR DATA.
+
 Save the samplesheet.csv file and return to your ATAC-seq directory.
 
 ## Make a Nextflow configuration file to use SLURM as the process executor
