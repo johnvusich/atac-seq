@@ -1,7 +1,10 @@
-# atac-seq
+# ATAC-seq analysis
 Pipeline to analyze ATAC-seq data on the HPCC using SLURM.
+## Nextflow pipelines
+I use nf-core pipelines for ATAC-seq analysis: [nf-core/atacseq](https://nf-co.re/atacseq), and differential accessibility analysis: [nf-core/differentialabundance](https://nf-co.re/differentialabundance). 
+*See my notes on formatting nf-core/atacseq output files for input to nf-core/differentialabundance pipeline.*
 
-## Steps
+## Steps for running nf-core/atacseq on HPC at Michigan State University
 1. Create a directory for analysis.
 2. Prepare a samplesheet table in csv format. (ex: samplesheet.csv)
 3. Make a Nextflow config file.
@@ -9,14 +12,14 @@ Pipeline to analyze ATAC-seq data on the HPCC using SLURM.
 5. Write a bash script to run the pipeline using SLURM.
 6. Run the pipeline from your ATAC-seq directory.
 
-## Create a directory
+### Create a directory
 Login to your HPCC account using OnDemand. Navigate to your home directory by clicking 'Files' in the navigation bar. Select 'Home Directory'.
 
 Create a directory for your analysis by clicking 'New Directory'. Name your directory (ex: atacseq). Navigate to the newly created ATAC-seq directory.
 
 Make sure to upload your data (FASTQ files) into this directory.
 
-## Make a samplesheet table
+### Make a samplesheet table
 In your ATAC-seq directory, click 'New File'. Name the file 'samplesheet.csv'. Click the `⋮` symbol and select edit. Create the samplesheet table FOR YOUR DATA. Below is a template:
 ```
 sample,fastq_1,fastq_2,replicate
@@ -28,7 +31,7 @@ Note: the samplesheet above is an example to show the required format. You will 
 
 Save the samplesheet.csv file and return to your ATAC-seq directory.
 
-## Make a Nextflow configuration file to use SLURM as the process executor
+### Make a Nextflow configuration file to use SLURM as the process executor
 In your ATAC-seq directory, click `New File`. Name the file 'nextflow.config'. Click the `⋮` symbol and select edit. Create the Nextflow config file:
 ```
 process {
@@ -37,7 +40,7 @@ process {
 ```
 Save the nextflow.config file and return to your ATAC-seq directory.
 
-## Find your reference genome in ICER common-data OR download the reference genome and gtf files in your directory
+### Find your reference genome in ICER common-data OR download the reference genome and gtf files in your directory
 The following organisms have updated reference genomes and gtf/gff3 files in common-data: human, mouse, rat, zebrafish, and Arabidopsis. The paths to those files can be found [here](https://github.com/johnvusich/reference-genomes).
 
 In your directory, click `Open in Terminal` to enter a development node. Download the most recent genome primary assembly and gtf for the organism of interest from [Ensembl](https://ensembl.org/). Follow the instructions [here](https://github.com/johnvusich/reference-genomes) to download the reference genome for your organism of interest. This may take more than a few minutes. For example:
@@ -48,7 +51,7 @@ wget https://ftp.ensembl.org/pub/release-108/gtf/homo_sapiens/Homo_sapiens.GRCh3
 ```
 Note: If you do not download the genome and gtf for the organism that the RNA-seq data is derived from, this pipeline will not work correctly.
 
-## Write a bash script to run the pipeline using SLURM
+### Write a bash script to run the pipeline using SLURM
 In your ATAC-seq directory, click `New File`. Name the file 'run_atacseq.sb;. Write the bash script, using #SBATCH directives to set resources, for example:
 ```
 #!/bin/bash
@@ -66,13 +69,12 @@ nextflow run nf-core/atacseq -r 2.1.2 --input ./samplesheet.csv  -profile singul
 ```
 Save the run_atacseq.sb file and return to your ATAC-seq directory.
 
-## Run the pipeline
+### Run the pipeline
 In your ATAC-seq directory, click `Open in Terminal` to enter a development node. Run jobs on the SLURM cluster:
 ```
 sbatch run_atacseq.sb
 ```
 Check the status of your pipeline job:
 ```
-squeue -u $username
+squeue -u $USER
 ```
-Note: replace $username with your username
