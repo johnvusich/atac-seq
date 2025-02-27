@@ -1,5 +1,5 @@
 # ATAC-seq analysis
-Pipeline to analyze ATAC-seq data on the HPCC using SLURM.
+
 ## Nextflow pipelines
 I use nf-core pipelines for ATAC-seq analysis: [nf-core/atacseq](https://nf-co.re/atacseq), and differential accessibility analysis: [nf-core/differentialabundance](https://nf-co.re/differentialabundance). 
 *See my notes on formatting nf-core/atacseq output files for input to nf-core/differentialabundance pipeline.*
